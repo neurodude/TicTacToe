@@ -20,6 +20,7 @@ class TicTacToe {
                 setUpBoard();
                 startNew = false;
             }
+       
             printBoard();
             getMove();
             checkWinner();
@@ -32,9 +33,16 @@ class TicTacToe {
     }
     
     public static void setUpBoard(){
+       if (board.size()>=9){
         for (int i = 0; i<9;i++){
-            board.add(" ");
+            board.set(i," ");
             }
+       } 
+       else {
+            for (int i = 0; i<9;i++){
+                board.add(" ");
+                }
+       }
     }
     public static void printBoard(){
         System.out.println("         |          |           ");
@@ -83,6 +91,7 @@ class TicTacToe {
         }
         else if (start == 11){
             quit = false;
+            startNew = true;
         }
         else if (start == 12){
             quit = true;
@@ -90,11 +99,12 @@ class TicTacToe {
             
     }
     public static void checkWinner(){
-            for (int i = 0; i< win[0].length;i++){
+            for (int i = 0; i< win.length;i++){
                 System.out.println(board.get(win[i][0]) +" " +board.get(win[i][1]) +" " +board.get(win[i][2]) +" ");
                 if (board.get(win[i][0]).equals(player) && board.get(win[i][1]).equals(player) && board.get(win[i][2]).equals(player))     {
                     
                     winner = true;
+                    quit = true;
                     System.out.println("Winner");
             }
     
