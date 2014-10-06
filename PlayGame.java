@@ -14,13 +14,13 @@ class PlayGame {
     public String getPlayer(){
         return player;
     }
-    public static void getMove(){
+    public int getMove(){
         System.out.print("Enter a location 1-9:  ");
         loc = scan.nextInt() - 1;
         checkMove();
     }
     
-    public static void changePlayer(){
+    public void changePlayer(){
         if (player.equals("X")){
             player = "O";
 
@@ -30,7 +30,7 @@ class PlayGame {
 
         }
     }
-    public static void checkNewGame(){
+    public void checkNewGame(){
         System.out.println("Do you want to start a new game: (11 = Yes, 12 = No)");
         start = scan.nextInt();
         if ((start != 11) && (start != 12)){

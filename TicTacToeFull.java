@@ -11,17 +11,29 @@ class TicTacToeFull {
     
     
     public static void main(String[] args) {
+        int move;
+        boolean place;
+        boolean winner;
         while (!quit) {
             if (startNew) {
                 board.setUpBoard(false);
                 startNew = false;
             }
+            
             board.printBoard();
-            game.getMove();
-            board.checkWinner();
-            game.changePlayer();
-            if (winner == true) {
+            
+            move = game.getMove();  //Get User Move
+            while (!board.placeMove(move, game.getPlayer())){
+                move = game.getMove();
+            }
+            
+            boolean winner = board.checkWinner();
+            
+            if (winner) {
                 game.checkNewGame();
+            }
+            else {
+                game.changePlayer();
             }
         }
     }
