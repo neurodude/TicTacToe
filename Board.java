@@ -58,7 +58,7 @@ class Board {
         }
     }
     
-    private boardTranslate(Integer boardSetup){
+    private void boardTranslate(Integer boardSetup){
         String tempBoard = boardSetup.toString();
         for(int i =0 ; i<tempBoard.size();i++){
             if (tempBoard[i].equals("0")){
