@@ -37,6 +37,7 @@ class TicTacToeFull {
             winner = board.checkWinner(game.getPlayer());
             
             if (winner) {
+                board.printBoard();
                 quit = game.checkNewGame();
             }
             else {

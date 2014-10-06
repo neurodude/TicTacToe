@@ -72,11 +72,9 @@ class Board {
     public boolean checkWinner(String player) {
         boolean winner = false;
         for (int i = 0; i < win.length; i++) {
-            System.out.println(board.get(win[i][0]) + " " + board.get(win[i][1]) + " " + board.get(win[i][2]) + " ");
             if (board.get(win[i][0]).equals(player) && board.get(win[i][1]).equals(player) && board.get(win[i][2]).equals(player)) {
 
                 winner = true;
-                System.out.println("Winner");
             }
         }
         return winner;
