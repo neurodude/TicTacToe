@@ -14,9 +14,16 @@ class TicTacToeFull {
         int move;
         boolean place;
         boolean winner;
+        boolean quit = false;
+        boolean firstGame = true;
+        boolean startNew = true;
+        String player = game.getPlayer();
+        
+        
         while (!quit) {
             if (startNew) {
-                board.setUpBoard(false);
+                board.setUpBoard(firstGame);
+                firstGame = false;
                 startNew = false;
             }
             
@@ -27,13 +34,13 @@ class TicTacToeFull {
                 move = game.getMove();
             }
             
-            boolean winner = board.checkWinner();
+            winner = board.checkWinner(game.getPlayer());
             
             if (winner) {
-                game.checkNewGame();
+                quit = game.checkNewGame();
             }
             else {
-                game.changePlayer();
+                player = game.changePlayer();
             }
         }
     }

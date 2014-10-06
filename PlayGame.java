@@ -9,6 +9,7 @@ class PlayGame {
     boolean firstGame = true;
     int start;
     boolean winner = false;
+    Scanner scan = new Scanner(System.in);
     
     
     public String getPlayer(){
@@ -16,11 +17,11 @@ class PlayGame {
     }
     public int getMove(){
         System.out.print("Enter a location 1-9:  ");
-        loc = scan.nextInt() - 1;
-        checkMove();
+        int loc = scan.nextInt() - 1;
+        return loc;
     }
     
-    public void changePlayer(){
+    public String changePlayer(){
         if (player.equals("X")){
             player = "O";
 
@@ -29,8 +30,9 @@ class PlayGame {
             player = "X";
 
         }
+        return player;
     }
-    public void checkNewGame(){
+    public boolean checkNewGame(){
         System.out.println("Do you want to start a new game: (11 = Yes, 12 = No)");
         start = scan.nextInt();
         if ((start != 11) && (start != 12)){
@@ -43,7 +45,7 @@ class PlayGame {
         else if (start == 12){
             quit = true;
         }
-            
+        return quit;   
     }
 
 }

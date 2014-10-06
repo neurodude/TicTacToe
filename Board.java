@@ -36,15 +36,15 @@ class Board {
             }
 
         }
-    }
-    public void setUpBoard() {
-        if (board.size() == 9) {
-            for (int i = 0; i < 9; i++) {
-                board.set(i, " ");
+        else {
+            if (board.size() == 9) {
+                for (int i = 0; i < 9; i++) {
+                    this.board.set(i, " ");
+                }
             }
         }
-    }
 
+    }
 
 
     public void printBoard() {
@@ -60,7 +60,7 @@ class Board {
 
 
     public boolean placeMove(int loc, String player) {
-        if (checkMove()) {
+        if (checkMove(loc)) {
             board.set(loc, player);
             return true;
         }
@@ -69,28 +69,29 @@ class Board {
         }
     }
 
-    public boolean checkWinner() {
+    public boolean checkWinner(String player) {
+        boolean winner = false;
         for (int i = 0; i < win.length; i++) {
             System.out.println(board.get(win[i][0]) + " " + board.get(win[i][1]) + " " + board.get(win[i][2]) + " ");
             if (board.get(win[i][0]).equals(player) && board.get(win[i][1]).equals(player) && board.get(win[i][2]).equals(player)) {
 
                 winner = true;
-                quit = true;
                 System.out.println("Winner");
             }
         }
+        return winner;
     }
 
     private void boardTranslate(Integer boardSetup) {
         String tempBoard = boardSetup.toString();
-        for (int i = 0; i < tempBoard.size(); i++) {
-            if (tempBoard[i].equals("0")) {
+        for (int i = 0; i < tempBoard.length(); i++) {
+            if (tempBoard.substring(i,i+1).equals("0")) {
                 board.set(i, " ");
             }
-            else if (tempBoard[i].equals("1")) {
+            else if (tempBoard.substring(i,i+1).equals("1")) {
                 board.set(i, "X");
             }
-            else if (tempBoard[i].equals("2")) {
+            else if (tempBoard.substring(i,i+1).equals("2")) {
                 board.set(i, "O");
             }
             else {
@@ -100,7 +101,7 @@ class Board {
         }
     }
 
-    public boolean checkMove() {
+    public boolean checkMove(int loc) {
         if (board.get(loc).equals(" ")) {
             return true;
         }
