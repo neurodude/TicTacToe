@@ -1,0 +1,13 @@
+language: java
+
+before_install:
+- sudo apt-get update
+- mkdir build
+- cd build
+- git clone https://github.com/PolyPrepAPClass/TestGradleRepo.git
+- cd TestGradleRepo
+- gradle build
+- cd ../..
+after_success:
+- export CLASSPATH=/usr/bin/junit:build/classes/test:build/classes/main:/usr/share/java/junit4.jar:build/TestGradleRepo/build/classes/test
+- java TestRunner
